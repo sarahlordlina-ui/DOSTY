@@ -1,0 +1,377 @@
+```html
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nathaniel Engmann | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      :root {
+        --bg-primary: #0f172a;
+        --bg-secondary: #1e293b;
+        --accent-primary: #2563eb;
+        --accent-secondary: #7c3aed;
+        --accent-highlight: #f59e0b;
+        --text-primary: #f8fafc;
+        --text-secondary: #cbd5e1;
+        --border-color: rgba(255, 255, 255, 0.08);
+        --shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+        --radius: 18px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+        scroll-behavior: smooth;
+      }
+      body {
+        background: linear-gradient(135deg, var(--bg-primary), #111827);
+        color: var(--text-primary);
+        display: flex;
+        min-height: 100vh;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      ul {
+        list-style: none;
+      }
+
+      .sidebar {
+        width: 320px;
+        background: var(--bg-secondary);
+        padding: 2rem;
+        border-right: 1px solid var(--border-color);
+        position: fixed;
+        height: 100%;
+        overflow-y: auto;
+      }
+
+      .avatar-box img {
+        width: 160px;
+        height: 160px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid var(--accent-primary);
+        margin-bottom: 1rem;
+      }
+
+      .name {
+        font-size: 1.8rem;
+        font-weight: 700;
+      }
+      .title {
+        color: #38bdf8;
+        margin-top: 0.5rem;
+      }
+
+      .contacts-list,
+      .social-list {
+        margin-top: 2rem;
+      }
+      .contact-item,
+      .social-item {
+        margin-bottom: 1rem;
+        color: var(--text-secondary);
+      }
+      .social-link:hover {
+        color: var(--accent-highlight);
+      }
+
+      .main-content {
+        margin-left: 320px;
+        width: calc(100% - 320px);
+        padding: 6rem 2rem 2rem;
+      }
+
+      .navbar {
+        position: fixed;
+        top: 1.5rem;
+        left: calc(320px + 2rem);
+        right: 2rem;
+        z-index: 100;
+        background: rgba(30, 41, 59, 0.98);
+        backdrop-filter: blur(16px);
+        padding: 1rem;
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+      }
+
+      .navbar-list {
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+      }
+      .navbar-link {
+        padding: 0.75rem 1rem;
+        min-width: 100px;
+        border: none;
+        cursor: pointer;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.06);
+        color: var(--text-secondary);
+      }
+      .navbar-link:hover {
+        color: var(--accent-highlight);
+      }
+
+      section {
+        margin-bottom: 4rem;
+      }
+      .article-title {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+      }
+      .article-title::after {
+        content: "";
+        display: block;
+        width: 60px;
+        height: 4px;
+        background: linear-gradient(
+          90deg,
+          var(--accent-primary),
+          var(--accent-highlight)
+        );
+        margin-top: 0.5rem;
+        border-radius: 4px;
+      }
+
+      .card-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .card {
+        background: var(--bg-secondary);
+        padding: 1.5rem;
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+      }
+
+      p {
+        color: var(--text-secondary);
+        line-height: 1.7;
+      }
+      h3,
+      h4 {
+        margin-bottom: 0.75rem;
+      }
+
+      .skill-bar {
+        background: #334155;
+        height: 10px;
+        border-radius: 10px;
+        overflow: hidden;
+        margin-top: 0.5rem;
+      }
+      .skill-fill {
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          var(--accent-primary),
+          var(--accent-highlight)
+        );
+      }
+
+      .form-input {
+        width: 100%;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        border-radius: 12px;
+        border: 1px solid #334155;
+        background: var(--bg-secondary);
+        color: white;
+      }
+      .form-btn {
+        padding: 0.9rem 1.4rem;
+        border: none;
+        border-radius: 12px;
+        background: linear-gradient(
+          135deg,
+          var(--accent-primary),
+          var(--accent-secondary)
+        );
+        color: white;
+        cursor: pointer;
+      }
+
+      @media (max-width: 992px) {
+        body {
+          flex-direction: column;
+        }
+        .sidebar,
+        .navbar {
+          position: relative;
+          width: 100%;
+          left: auto;
+          right: auto;
+          height: auto;
+        }
+        .main-content {
+          margin-left: 0;
+          width: 100%;
+          padding: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <aside class="sidebar">
+      <div class="avatar-box">
+        <img src="../assets/images/dollar.png" alt="Nathaniel Engmann" />
+      </div>
+      <h1 class="name">NATHANIEL ENGMANN</h1>
+      <p class="title">Frontend Developer</p>
+
+      <ul class="contacts-list">
+        <li class="contact-item">
+          <i class="fas fa-envelope"></i> sarahlordlina@gmail.com
+        </li>
+        <li class="contact-item"><i class="fas fa-phone"></i> 0204477533</li>
+        <li class="contact-item">
+          <i class="fas fa-map-marker-alt"></i> Kasoa, Ghana
+        </li>
+      </ul>
+    </aside>
+
+    <main class="main-content">
+      <nav class="navbar">
+        <ul class="navbar-list">
+          <li><a href="#about" class="navbar-link">About</a></li>
+          <li><a href="#resume" class="navbar-link">Resume</a></li>
+          <li><a href="#projects" class="navbar-link">Projects</a></li>
+          <li><a href="#research" class="navbar-link">Research</a></li>
+          <li><a href="#blog" class="navbar-link">Blog</a></li>
+          <li><a href="#books" class="navbar-link">Books</a></li>
+        </ul>
+      </nav>
+
+      <section id="about">
+        <h2 class="article-title">About Me</h2>
+        <p>
+          Hello! I'm a frontend developer passionate about building polished
+          digital experiences, modern web applications, and impactful software
+          solutions.
+        </p>
+      </section>
+
+      <section id="resume">
+        <h2 class="article-title">Resume</h2>
+        <div class="card-grid">
+          <div class="card">
+            <h3>Education</h3>
+            <p>
+              Software Engineering and technical training with strong frontend
+              specialization.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Experience</h3>
+            <p>
+              Frontend development, responsive UI engineering, and modern
+              deployment workflows.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="article-title">My Skills</h2>
+        <div class="card-grid">
+          <div class="card">
+            <h4>JavaScript, React, Node.js</h4>
+            <div class="skill-bar">
+              <div class="skill-fill" style="width: 80%"></div>
+            </div>
+          </div>
+          <div class="card">
+            <h4>AWS DevOps & CI/CD</h4>
+            <div class="skill-bar">
+              <div class="skill-fill" style="width: 70%"></div>
+            </div>
+          </div>
+          <div class="card">
+            <h4>Machine Learning</h4>
+            <div class="skill-bar">
+              <div class="skill-fill" style="width: 75%"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects">
+        <h2 class="article-title">Projects</h2>
+        <div class="card-grid">
+          <div class="card">
+            <h3>Portfolio Website</h3>
+            <p>Modern responsive personal branding platform.</p>
+          </div>
+          <div class="card">
+            <h3>Web Applications</h3>
+            <p>Frontend systems with polished user experiences.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="research">
+        <h2 class="article-title">Research</h2>
+        <div class="card-grid">
+          <div class="card">
+            <h3>Academic Research</h3>
+            <p>Technical studies and software innovation projects.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="blog">
+        <h2 class="article-title">Blog</h2>
+        <div class="card-grid">
+          <div class="card">
+            <h3>Frontend Engineering</h3>
+            <p>Articles on development, UI/UX, and software practices.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="books">
+        <h2 class="article-title">Books</h2>
+        <div class="card-grid">
+          <div class="card">
+            <h3>Book Folder</h3>
+            <p>Here is the book folder for your published resources.</p>
+            <p><strong>Location:</strong> <code>icon/book/</code></p>
+          </div>
+          <div class="card">
+            <h3>Publications</h3>
+            <p>Books and written technical resources.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="article-title">Contact</h2>
+        <form>
+          <input class="form-input" type="text" placeholder="Full Name" />
+          <input class="form-input" type="email" placeholder="Email Address" />
+          <textarea class="form-input" placeholder="Your Message"></textarea>
+          <button class="form-btn">Send Message</button>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>
+```
